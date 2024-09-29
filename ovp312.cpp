@@ -1,11 +1,23 @@
-﻿#include <iostream>
+#include <iostream>
 #include <windows.h>
 #include <vector>
 #define random(min,max) min +rand()%(max - min +1)
 using namespace std;
 template <typename T>
-class DinamicMassive{
+class DinamicMassive {
 public:
+	
+	DinamicMassive() {
+		size = 10;
+		array = new T[size];
+		for (int i = 0; i < size; i++)
+		{
+			array[i] = random(1, 10);
+		}
+	};
+	~DinamicMassive() {
+		delete[] array;
+	};
 
 	void show() {
 		for (int i = 0; i < size; i++)
@@ -14,14 +26,53 @@ public:
 		}
 		cout << endl;
 	}
-	T* createArray() {
-		array = new int[size];
-		return array;
-	}
 	void showSize() { cout << "size: " << size << endl; }
-	void deleteArray() {
-		size = 0;
+	
+	void addElement(T element) {
+		T* def = new T[size + 1];
+		for (int i = 0; i < size; i++)
+		{
+			def[i] = array[i];
+		}
+		def[size] = element;
+
 		delete[] array;
+		array = def;
+		size += 1;
+
+	}
+	void deleteElement() {
+		T* def = new T[size - 1];
+		for (int i = 0; i < size - 1; i++)
+		{
+			def[i] = array[i];
+		}
+
+		delete[] array;
+		array = def;
+		size -= 1;
+	}
+private:
+	int size ;
+	T* array;
+};
+
+
+int main() {
+
+
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	DinamicMassive<int> array;
+	array.show();
+	array.showSize();
+	array.addElement(95);
+	array.show();
+	array.deleteElement();
+	array.show();
+	
+	
+}
 	}
 	void addElement(T element) {
 		T* def = new T[size + 1];
