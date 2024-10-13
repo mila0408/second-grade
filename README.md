@@ -1,5 +1,5 @@
 # second-grade
 ### классная работа (25.09)
-- ovp 312
+- ovp312.cpp
 ### домашняя работа (14.10)
-- resevoir
+- resevoir.cpp
