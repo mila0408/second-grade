@@ -1,14 +1,21 @@
 #pragma once
-#include"Pets.h"
-class Cat: public Pets
+#include<iostream>
+#include "pet.h"
+using namespace std;
+
+class Cat :
+    public Pet
 {
-protected:
-	bool flag;
+private:
+    string felineFamily;
 public:
-	Cat();
-	~Cat();
-	void sound();
-	void show();
-	void type();
+    Cat();
+    Cat(string name, bool hunger, string birthday, string felineFamily);
+    ~Cat();
+    string getrFelineFamily();
+    void voice();
+
+
+    
 };
 
